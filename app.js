@@ -1,6 +1,7 @@
 const {
     Telegraf,
     Markup
+
 } = require('telegraf')
 require('dotenv').config()
 const text = require('./const')
@@ -9,26 +10,26 @@ const bot = new Telegraf(process.env.BOT_TOKEN)
 bot.start((ctx) => ctx.reply(`welcome ${ctx.message.from.first_name ? ctx.message.from.first_name : "окупант"}`))
 bot.help((ctx) => ctx.reply(text.command))
 
-bot.command(`course`, async(ctx) => {
-    try{
+bot.command(`course`, async (ctx) => {
+    try {
         await ctx.replyWithHTML('<b>курсив</b>', Markup.inlineKeyboard(
             [
-                [Markup.button.callback('Редактори', 'btn_1'),Markup.button.callback('обзори', 'btn_2')],
-                [Markup.button.callback('js', 'btn_3')]
+                [Markup.button.callback('text', 'text'), Markup.button.callback('video', 'video')],
+                [Markup.button.callback('tasks', 'tasks'), Markup.button.callback('information', 'info')]
             ]
         ))
 
-    }catch (e){
+    } catch (e) {
         console.error(e)
     }
 })
-function addActionBot(name, src, text){
 
-    bot.action(name, async (ctx) =>{
-        try{
-            await  ctx.answerCbQuery()
-            if (src !== false){
-                await  ctx.replyWithPhoto({
+function addActionBot(name, src, text) {
+    bot.action(name, async (ctx) => {
+        try {
+            await ctx.answerCbQuery()
+            if (src !== false) {
+                await ctx.replyWithPhoto({
                     source: src
                 })
             }
@@ -36,15 +37,17 @@ function addActionBot(name, src, text){
                 disable_web_page_preview: true
             })
 
-        }catch (e){
+        } catch (e) {
             console.error(e)
         }
 
     })
 }
-addActionBot('btn_1', './img/1.png', text.text1)
-addActionBot('btn_2', './img/2.png', text.text2)
-addActionBot('btn_3', false, text.text3)
+
+addActionBot('text', './img/1.png', text.text1)
+addActionBot('video', './img/2.png', text.text2)
+addActionBot('tasks', false, text.text3)
+addActionBot('tasks', './img/1.png', text.text3)
 bot.launch()
 
 // Enable graceful stop
