@@ -15,7 +15,7 @@ bot.command(`course`, async (ctx) => {
         await ctx.replyWithHTML('<b>курсив</b>', Markup.inlineKeyboard(
             [
                 [Markup.button.callback('text', 'text'), Markup.button.callback('video', 'video')],
-                [Markup.button.callback('tasks', 'tasks'), Markup.button.callback('information', 'info')]
+                [Markup.button.callback('start game', 'tasks'), Markup.button.callback('information', 'info')]
             ]
         ))
 
@@ -47,7 +47,7 @@ function addActionBot(name, src, text) {
 addActionBot('text', './img/1.png', text.text1)
 addActionBot('video', './img/2.png', text.text2)
 addActionBot('tasks', false, text.text3)
-addActionBot('tasks', './img/1.png', text.text3)
+addActionBot('info', './img/1.png', text.text2)
 bot.launch()
 
 // Enable graceful stop

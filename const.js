@@ -1,7 +1,7 @@
 const command = `
 /start - перезапустить бота
 /help - помощь
-/curse - визвати кнопки
+/course - визвати кнопки
 `
 const text1 = `
 1Текст для провірки обработчика і <a href="https://youtube.com">ссилка</a>
