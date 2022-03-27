@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e27aea60-8ec2-475e-bfb4-89c108d47e5b" name="Changes" comment="last">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="e27aea60-8ec2-475e-bfb4-89c108d47e5b" name="Changes" comment="last" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,6 +32,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
@@ -79,7 +84,10 @@
       <updated>1648049316602</updated>
       <workItem from="1648049318343" duration="14343000" />
       <workItem from="1648147822836" duration="5207000" />
-      <workItem from="1648212435727" duration="7922000" />
+      <workItem from="1648212435727" duration="9442000" />
+      <workItem from="1648235431578" duration="5286000" />
+      <workItem from="1648328640294" duration="6171000" />
+      <workItem from="1648403010934" duration="1837000" />
     </task>
     <task id="LOCAL-00001" summary="full">
       <created>1648060495998</created>
