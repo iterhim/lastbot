@@ -1,74 +1,196 @@
-const {
-    Telegraf,
-    Markup
+const TelegramBot = require('node-telegram-bot-api');
 
-} = require('telegraf')
+const token = '5291233984:AAEh-EBDPIjSJ19Urdc65-hAmE7o9FfAfCI';
 
-require('dotenv').config()
+const bot = new TelegramBot(token, {polling: true});
 
-const text = require('./const')
+const cron = require('node-cron');
 
-const bot = new Telegraf(process.env.BOT_TOKEN)
+bot.setMyCommands([
+    {command: '/start', description: 'запуск проги'},
+    {command: '/sayHi', description: 'привітатись'},
+])
 
-bot.start((ctx) => ctx.reply(`welcome ${ctx.message.from.first_name ? ctx.message.from.first_name : "окупант"}`))
-bot.help((ctx) => ctx.reply(text.command))
+// const gameOptions = {
+//     reply_markup: JSON.stringify({
+//         inline_keyboard: [
+//             [{text: '1', callback_data: '1'}, {text: '2', callback_data: '2'}]
+//         ]
+//     })
+// }
+let right = 0, wrong = 0;
 
-bot.command(`/game`, async (ctx) => {
-    try {
-        await ctx.replyWithHTML('<b>Вгадай цифру</b>', Markup.inlineKeyboard(
-            [
-                [{text: '1', callback_data: "1"},{text: '2', callback_data: "2"},{text: '3', callback_data: "3"}],
-                [{text: '4', callback_data: "4"},{text: '5', callback_data: "5"},{text: '6', callback_data: "6"}],
-                [{text: '7', callback_data: "7"},{text: '8', callback_data: "8"},{text: '9', callback_data: "9"}],
-                [{text: '0', callback_data: '0'}]
-            ]
+// const startGame = async (chatId) => {
+//     await bot.sendMessage(chatId, `Сейчас я загадаю цифру от 0 до 9, а ты должен ее угадать!`);
+//     await bot.sendMessage(chatId, 'Отгадывай', gameOptions);
+// }
 
-        ))
-        await ctx.replyWithHTML('загадую циферку, вгадай її')
+// const sent = async (chatId) => {
+//     await bot.sendMessage(chatId, "відгадуй")
+// }
+let task = {};
+bot.on('message', async (msg) => {
+        try {
+            task.organization = cron.schedule('10 8 * 1-6,9-12 Monday-friday', () => {
+                bot.sendMessage(chatId, 'прокидаємось на парии)))');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            });
+            task.mon1 = cron.schedule('15 8 * 1-6,9-12 monday',  () => {
+                bot.sendMessage(chatId, 'ВИЩА МАТЕМ ЛЕКЦІЯ https://meet.google.com/tod-voqx-trq aбо КОМП\'ЮТЕРНА АРИФМЕТИКА ЛЕКЦІЯ:  https://meet.google.com/xjd-cjpg-ukg');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            })
+            task.mon2 = cron.schedule('0 45 9 * 1-6,9-12 monday',  () => {
+                bot.sendMessage(chatId, 'ВИЩА МАТЕМ ЛЕКЦІЯ https://meet.google.com/tod-voqx-trq aбо КОМП\'ЮТЕРНА АРИФМЕТИКА ЛЕКЦІЯ:  https://meet.google.com/xjd-cjpg-ukg');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            })
+            task.tue1 = cron.schedule('0 15 8 * 1-6,9-12 tuesday',  () => {
+                bot.sendMessage(chatId, 'ФІЗИКА: https://meet.google.com/lookup/g2zadkf4lw?authuser=0&hs=179');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            })
+            task.tue2 = cron.schedule('0 45 9 * 1-6,9-12 tuesday',  () => {
+                bot.sendMessage(chatId, 'ФІЗИКА: https://meet.google.com/lookup/g2zadkf4lw?authuser=0&hs=179');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            })
+            task.tue3 = cron.schedule('0 25 11 * 1-6,9-12 tuesday',  () => {
+                bot.sendMessage(chatId, 'ФІЗИКА (ЛР): https://meet.google.com/vyo-jzjg-roo');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            })
+            task.wed1 = cron.schedule('0 15 8 * 1-6,9-12 Wednesday', () => {
+                bot.sendMessage(chatId, 'КОМП\'ЮТЕРНА АРИФМЕТИКА ПР: https://meet.google.com/awa-xzmo-ssh ');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            });
+            task.wed2 = cron.schedule('0 45 9 * 1-6,9-12 Wednesday', () => {
+                bot.sendMessage(chatId, 'ВИЩА МАТЕМ ПР: https://meet.google.com/ark-ezfh-bvf');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            });
+            task.wed3 = cron.schedule('0 25 11 * 1-6,9-12 Wednesday', () => {
+                bot.sendMessage(chatId, 'АНГЛІЙСЬКА: https://meet.google.com/oiq-qwpz-ukj');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            });
+            task.wed4 = cron.schedule('0 55 12 * 1-6,9-12 Wednesday', () => {
+                bot.sendMessage(chatId, 'ПРОГРАМУВАННЯ ЛР (1): https://meet.google.com/zcd-asyr-nvq  (2): https://meet.google.com/ayw-vuwh-wnf  ');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            });
+            task.thu1 = cron.schedule('0 15 8 * 1-6,9-12 Thursday', () => {
+                bot.sendMessage(chatId, 'Зараз ще можна відпочити 90 хвилинок)))');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            });
+            task.thu2 = cron.schedule('0 45 9 * 1-6,9-12 Thursday', () => {
+                bot.sendMessage(chatId, 'ПРОГРАМУВАННЯ ЛР (1): https://meet.google.com/zcd-asyr-nvq  (2): https://meet.google.com/ayw-vuwh-wnf');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            });
+            task.thu3 = cron.schedule('0 25 11 * 1-6,9-12 Thursday', () => {
+                bot.sendMessage(chatId, 'ВИЩА МАТЕМ ПР: https://meet.google.com/ark-ezfh-bvf');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            });
+            task.thu4 = cron.schedule('0 55 12 * 1-6,9-12 Thursday', () => {
+                bot.sendMessage(chatId, 'ДИСКРЕТНА МАТЕМ ПР: https://meet.google.com/wer-fgep-bvc');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            });
+            task.fri1 = cron.schedule('0 15 8 * 1-6,9-12 friday', () => {
+                bot.sendMessage(chatId, 'ДИСКРЕТНА МАТЕМ ЛЕКЦІЇ: https://meet.google.com/ngi-yrpo-dpt');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            });
+            task.fri2 = cron.schedule('0 45 9 * 1-6,9-12 friday', () => {
+                bot.sendMessage(chatId, 'ВИЩА МАТЕМ ЛЕКЦІЯ: https://meet.google.com/tod-voqx-trq');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            });
+            task.fri3 = cron.schedule('0 25 11 * 1-6,9-12 friday', () => {
+                bot.sendMessage(chatId, 'ПРОГРАМУВАННЯ ЛЕКЦІЯ: https://meet.google.com/apz-vckx-nqz');
+            }, {
+                scheduled: true,
+                timezone: "Europe/Kiev"
+            });
+
+            const chatId = msg.chat.id;
+            console.log(msg)
+
+            if (msg.text === '/work') {
+                // await bot.sendMessage(chatId, 'Отгадывай', gameOptions);
+            } else if (msg.text === '/sayHi') {
+                await bot.sendMessage(chatId, `ім'я:  ${msg.chat.first_name} прізвище: ${msg.chat.last_name} `);
+            } else if (msg.text === '/start') {
+                await bot.sendMessage(chatId, `привіт ${msg.chat.first_name} `);
+
+                task.organization.start()
+
+                task.mon1.start()
+                task.mon2.start()
+
+                task.thu1.start()
+                task.thu2.start()
+                task.thu3.start()
+
+                task.wed1.start()
+                task.wed2.start()
+                task.wed3.start()
+                task.wed4.start()
+
+                task.thu1.start()
+                task.thu2.start()
+                task.thu3.start()
+                task.thu4.start()
+
+                task.fri1.start()
+                task.fri2.start()
+                task.fri3.start()
 
 
-    } catch (e) {
-        console.error(e)
+            } else if (msg.data === '/again') {
+                // return startGame(chatId)
+            } else {
+                await bot.sendMessage(chatId, 'Не те вводиш');
+            }
+        } catch
+            (e) {
+            console.log(e)
+        }
+    }
+)
+bot.on('callback_query', async msg => {
+    const data = msg.data;
+    const chatId = msg.message.chat.id;
+    console.log(chatId)
+
+    // const user = await UserModel.findOne({chatId})
+    if (data === 1) {
+        right += 1;
+        await bot.sendMessage(chatId, ` '1' нажато - ${right} разів`);
+    } else {
+        wrong += 1;
+        await bot.sendMessage(chatId, ` '2' нажато - ${wrong} разів`);
     }
 })
-const randomNumber = Math.floor(Math.random() * 10);
-
-
-function addActionBot(name, randomNumber) {
-    bot.action(name, async (msg) => {
-        try {
-            console.log(msg.update.callback_query.data)
-            // await  msg.answerCbQuery()
-                if (name == randomNumber){
-                    msg.reply(`молодець`)
-                }else {
-                    msg.reply(`спробуй ще раз (${randomNumber})`)
-                }
-
-
-
-
-        }
-        catch (e) {
-            console.error(e)
-        }
-
-    })
-}
-
-addActionBot('1', randomNumber)
-addActionBot('2', randomNumber)
-addActionBot('3', randomNumber)
-addActionBot('4', randomNumber)
-addActionBot('5', randomNumber)
-addActionBot('6', randomNumber)
-addActionBot('7', randomNumber)
-addActionBot('8', randomNumber)
-addActionBot('9', randomNumber)
-addActionBot('0', randomNumber)
-bot.launch()
-
-// Enable graceful stop
-process.once('SIGINT', () => bot.stop('SIGINT'))
-process.once('SIGTERM', () => bot.stop('SIGTERM'))
 
