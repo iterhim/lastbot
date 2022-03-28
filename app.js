@@ -38,7 +38,7 @@ bot.on('message', async (msg) => {
                 timezone: "Europe/Kiev"
             });
             task.mon1 = cron.schedule('15 8 * 1-6,9-12 monday',  () => {
-                bot.sendMessage(chatId, 'ВИЩА МАТЕМ ЛЕКЦІЯ https://meet.google.com/tod-voqx-trq aбо КОМП\'ЮТЕРНА АРИФМЕТИКА ЛЕКЦІЯ:  https://meet.google.com/xjd-cjpg-ukg');
+                bot.sendMessage(chatId, 'ПРОГРАМУВАННЯ ЛЕКЦІЯ:https://meet.google.com/apz-vckx-nqz');
             }, {
                 scheduled: true,
                 timezone: "Europe/Kiev"
