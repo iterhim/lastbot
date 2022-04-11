@@ -8,26 +8,11 @@ const cron = require('node-cron');
 
 bot.setMyCommands([
     {command: '/start', description: 'запуск проги'},
-    {command: '/sayHi', description: 'привітатись'},
+    // {command: '/sayHi', description: 'привітатись'},
 ])
 
-// const gameOptions = {
-//     reply_markup: JSON.stringify({
-//         inline_keyboard: [
-//             [{text: '1', callback_data: '1'}, {text: '2', callback_data: '2'}]
-//         ]
-//     })
-// }
 let right = 0, wrong = 0;
 
-// const startGame = async (chatId) => {
-//     await bot.sendMessage(chatId, `Сейчас я загадаю цифру от 0 до 9, а ты должен ее угадать!`);
-//     await bot.sendMessage(chatId, 'Отгадывай', gameOptions);
-// }
-
-// const sent = async (chatId) => {
-//     await bot.sendMessage(chatId, "відгадуй")
-// }
 let task = {};
 bot.on('message', async (msg) => {
         try {
@@ -135,13 +120,9 @@ bot.on('message', async (msg) => {
             });
 
             const chatId = msg.chat.id;
-            console.log(msg)
+            // console.log(msg)
 
-            if (msg.text === '/work') {
-                // await bot.sendMessage(chatId, 'Отгадывай', gameOptions);
-            } else if (msg.text === '/sayHi') {
-                await bot.sendMessage(chatId, `ім'я:  ${msg.chat.first_name} прізвище: ${msg.chat.last_name} `);
-            } else if (msg.text === '/start') {
+            if (msg.text === '/start') {
                 await bot.sendMessage(chatId, `привіт ${msg.chat.first_name} `);
 
                 task.organization.start()
@@ -168,8 +149,6 @@ bot.on('message', async (msg) => {
                 task.fri3.start()
 
 
-            } else if (msg.data === '/again') {
-                // return startGame(chatId)
             } else {
                 await bot.sendMessage(chatId, 'Не те вводиш');
             }
@@ -182,7 +161,7 @@ bot.on('message', async (msg) => {
 bot.on('callback_query', async msg => {
     const data = msg.data;
     const chatId = msg.message.chat.id;
-    console.log(chatId)
+    // console.log(chatId)
 
     // const user = await UserModel.findOne({chatId})
     if (data === 1) {
